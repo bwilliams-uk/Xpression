@@ -1,0 +1,14 @@
+{
+    "name": "williams/testtube",
+    "description": "TestTube: A lightweight and extensible unit testing framework for PHP.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Williams\\Xpression\\" : "../src/",
+            "Williams\\TestTube\\": "src/",
+            "": "templates/"
+        }
+    },
+    "require": {}
+}

@@ -1,0 +1,42 @@
+<?php
+/*
+
+Command line script to show working of expression.
+Usage: php explain.php "1+2+3"
+
+ */
+use Williams\Xpression\Factories\ExpressionFactory;
+use Williams\Xpression\Factories\ExpressionSolverFactory;
+use Williams\Xpression\Xpression;
+
+require_once('vendor/autoload.php');
+$expressionText = $argv[1] ?? '';
+
+$env = Xpression::new();
+
+$expression = ExpressionFactory::create($expressionText);
+$expressionSolver = ExpressionSolverFactory::create($env);
+
+try{
+    $result = $expressionSolver->solve($expression);
+    $success = true;
+}
+catch(Exception $e){
+    $success = false;
+    $exceptionType = get_class($e);
+    $exceptionMessage = $e->getMessage();
+}
+
+//Output
+
+echo implode(PHP_EOL,$expression->history());
+echo str_repeat(PHP_EOL,2);
+if($success){
+    echo "No Exceptions were thrown. The expression evaluated to $result.";
+}
+else{
+    echo "An Exception was thrown.".str_repeat(PHP_EOL,2);
+    echo "Type : $exceptionType".PHP_EOL;
+    echo "Message : $exceptionMessage";
+}
+echo str_repeat(PHP_EOL,2);

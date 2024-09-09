@@ -1,0 +1,6 @@
+<?php
+
+use Williams\TestTube\TestTube;
+
+require_once('vendor/autoload.php');
+TestTube::run(TestTube::createRequest(__DIR__, 'tests', $argv));

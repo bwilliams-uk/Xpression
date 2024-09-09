@@ -1,0 +1,11 @@
+{
+    "name": "williams/xpression",
+    "description": "Evaluate user supplied mathmematical expressions.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Williams\\Xpression\\": "src/"
+        }
+    },
+    "require": {}
+}
